@@ -67,8 +67,35 @@ function createTaskUpdater(updateFn: (task: PriorityTask) => void): (task: Prior
 }
 // เรียกใช้งาน updateFn ด้วย task ที่ถูกส่งเข้ามาโดย task จะดูจากค่าอื่น ๆ เช่น task.priority
 const markAsUrgent = createTaskUpdater((task: PriorityTask) => {
-    task.priority = 'high'; // ตั้งค่าความสำคัญเป็น high
+    task.priority = 'high';
 });
 // ใช้ task.priority ส่งค่าไปใน updateFn เพื่อตั้งค่าความสำคัญเป็น high สรุปคือ method markAsUrgent ทำให้วามสำคัญเป็น high
+
+
+// Part 6
+async function fetchTasks(): Promise<Task[]> {
+// ทำงานแบบ asynchronous และสามารถใช้คำสั่ง await ภายในฟังก์ชันได้ โดย Promise ที่จะมี Array ของ Task นี่หมายความว่าเมื่อฟังก์ชันทำงานเสร็จสิ้น มันจะคืนค่าอาเรย์ของงาน
+try {
+    const tasks: Task[] = await new Promise((resolve, reject) => {
+// การใช้ try/ catch: try { ... }: เริ่มต้นบล็อก try เพื่อจับข้อผิดพลาดที่อาจเกิดขึ้นในระหว่างการทำงาน, await new Promise(...): ใช้ await เพื่อรอให้ Promise ที่ถูกสร้างขึ้นทำงานเสร็จจากนั้นจะใช้ Promise เพื่อจำลองการดึง api
+setTimeout(() => {
+    const dummyTasks: Task[] = [
+        new Task("ออกแบบหน้าแรก", "สร้าง mockup สำหรับหน้าแรก"),
+        new Task("พัฒนาฟีเจอร์ใหม่", "สร้างฟีเจอร์สำหรับผู้ใช้ใหม่"),
+        new Task("ทดสอบระบบ", "ทดสอบฟีเจอร์ต่างๆ")
+    ];
+    resolve(dummyTasks);
+}, 2000);
+// setTimeout: ใช้เพื่อจำลองความล่าช้า (delay) ในการตอบกลับจาก API เป็นเวลา 2 วินาที (2000 มิลลิวินาที), dummyTasks: สร้างอาเรย์ของ Task ที่มีงานตัวอย่าง 3 งาน, resolve(dummyTasks);: เรียกใช้ resolve เพื่อส่งคืนข้อมูลที่จำลองเป็นอาเรย์ของ Task
+return tasks; 
+// คืนค่ารายการของ Task
+} catch (error) {
+    console.error("Error fetching tasks:", error);
+    throw new Error("Failed to fetch tasks"); // สร้างข้อผิดพลาดในกรณีที่เกิดปัญหา
+}
+สร้าง catch ต่อจากบล็อก try เพื่อทำงานเมื่อตอนที่ try error โดยแสดง error ออกมา
+
+
+
 
 
