@@ -38,4 +38,16 @@ markCompleted(): void {
 }
 // Override method โดยการเรียกชื่อ method เดิมแต่ใส่คุณสมบัติใหม่ได้ โดย super จะเป็นการเรียกใช้ method ของตัวแม่ เทคนิค `` เป็นการแสดงข้อความโดยสามารถใช้ $"" เพื่อเรียกใช้ method ได้
 
+// Part 3
+interface TeamMember {
+    name: string;
+    role: string;
+    tasks: Task[];
+}
+// สร้างโครงสร้าง interface เพื่อเก็บข้อมูลอย่างง่ายและเป็นระเบียบขึ้น
+function assignTask(member: TeamMember, task: Task): void {
+    member.tasks.push(task); // เพิ่ม task ลงใน tasks array ของสมาชิก
+}
+// สร้าง function assignTask เพื่อเพิ่ม Task ของสมาชิก โดยใช้ parameter member, task มาแก้ไขข้อมูลของ interface TeamMember
+
 
