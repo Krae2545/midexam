@@ -138,7 +138,7 @@ console.log("Incomplete Tasks:", incompleteTasks); // แสดงผล: [ Task
 const completedCount = tasks.reduce((count, task) => task.completed ? count + 1 : count, 0);
 console.log("Completed Tasks Count:", completedCount); // แสดงผล: 2
 
-//Part 9
+//Part 8
 // ฟังก์ชัน parseTaskData
 function parseTaskData(jsonData: string): Task[] | string {
     try {
