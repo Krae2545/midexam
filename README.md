@@ -17,15 +17,16 @@ constructor(title: string, description: string) {
 markCompleted(): void {
     this.completed = true;
 }
-// เป็น function ปรับค่าใน class ปกติ
+// เป็น method ปรับค่าใน class ปกติ
 updateDescription(newDescription: string): void {
     this.description = newDescription;
 }
-// เป็น function ปรับค่าใน class โดยใช้ parameter ที่ส่งมา
+// เป็น method ปรับค่าใน class โดยใช้ parameter ที่ส่งมา
 static totalTasks(): number {
     return Task.taskCount;
 }
-// เป็น function ส่งค่าจำนวน task ใน class ออกไปโดยตั้งเป็น static ช่วยให้คุณสามารถสร้างสมาชิกที่เป็นของคลาสโดยตรง ซึ่งมีค่าเดียวสำหรับทุกอ็อบเจกต์ที่สร้างจากคลาสนั้น และช่วยให้สามารถเข้าถึงเมธอดหรือคุณสมบัติได้โดยไม่ต้องสร้างอินสแตนซ์ใหม่
+// เป็น method ส่งค่าจำนวน task ใน class ออกไปโดยตั้งเป็น static ช่วยให้คุณสามารถสร้างสมาชิกที่เป็นของคลาสโดยตรง ซึ่งมีค่าเดียวสำหรับทุกอ็อบเจกต์ที่สร้างจากคลาสนั้น และช่วยให้สามารถเข้าถึงเมธอดหรือคุณสมบัติได้โดยไม่ต้องสร้างอินสแตนซ์ใหม่
+
 
 // Part 2
 class PriorityTask extends Task
@@ -38,6 +39,7 @@ markCompleted(): void {
 }
 // Override method โดยการเรียกชื่อ method เดิมแต่ใส่คุณสมบัติใหม่ได้ โดย super จะเป็นการเรียกใช้ method ของตัวแม่ เทคนิค `` เป็นการแสดงข้อความโดยสามารถใช้ $"" เพื่อเรียกใช้ method ได้
 
+
 // Part 3
 interface TeamMember {
     name: string;
@@ -48,6 +50,14 @@ interface TeamMember {
 function assignTask(member: TeamMember, task: Task): void {
     member.tasks.push(task); // เพิ่ม task ลงใน tasks array ของสมาชิก
 }
-// สร้าง function assignTask เพื่อเพิ่ม Task ของสมาชิก โดยใช้ parameter member, task มาแก้ไขข้อมูลของ interface TeamMember
+// สร้าง method assignTask เพื่อเพิ่ม Task ของสมาชิก โดยใช้ parameter member, task มาแก้ไขข้อมูลของ interface TeamMember
+
+
+// Part 4
+class Queue<T> {
+    private items: T[] = []; // สร้างอาเรย์เพื่อเก็บข้อมูลใน queue
+// ประกาศคลาส Queue โดยใช้ generic type <T> ซึ่งหมายความว่า Queue สามารถเก็บข้อมูลประเภทใดก็ได้ที่ระบุในช่วงเวลาที่สร้างอ็อบเจกต์ ที่เหลือสร้าง method ทั่วไปโดยใช้ push, shift
+
+
 
 
