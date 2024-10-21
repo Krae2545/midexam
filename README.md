@@ -116,6 +116,18 @@ console.log("Completed Tasks Count:", completedCount); // แสดงผล: 2
 // ใช้ reduce() เพื่อนับจำนวน Task ที่ทำเสร็จ
 
 
+// Part 8
+function parseTaskData(jsonData: string): Task[] | string {
+// รับพารามิเตอร์ jsonData ซึ่งเป็น string ที่มีข้อมูลในรูปแบบ JSON
+try {
+    const taskData = JSON.parse(jsonData);
+// พยายามแปลง jsonData จาก string เป็นอาเรย์ของ object
+if (!Array.isArray(taskData) || !taskData.every(task => typeof task.title === 'string' && typeof task.description === 'string')) {
+    throw new Error("Invalid task data format");
+}
+// ตรวจสอบว่าข้อมูลที่ได้จาก JSON.parse เป็นอาเรย์หรือไม่, ตรวจสอบว่าแต่ละ object ในอาเรย์มี title และ description ที่เป็น string ถ้าผิดพลาดจะมี error แจ้งเตือน
+return taskData.map((task: { title: string; description: string }) => new Task(task.title, task.description));
+// แปลงข้อมูลเป็นอาเรย์ของ Task โดยใช้ map
 
 
 
