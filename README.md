@@ -130,4 +130,11 @@ return taskData.map((task: { title: string; description: string }) => new Task(t
 // แปลงข้อมูลเป็นอาเรย์ของ Task โดยใช้ map
 
 
-
+// Part 9
+// taskUtils.ts
+export function calculateTotalCompletedTasks(tasks: Task[]): number {
+// export: ทำให้ฟังก์ชันนี้สามารถนำเข้าไปใช้งานในไฟล์อื่นได้
+// index.ts
+const completedCount = calculateTotalCompletedTasks(tasks);
+console.log("Total Completed Tasks:", completedCount);
+// เรียกใช้ export function ของไฟล์ taskUtils.ts และแสดงผล
