@@ -1,4 +1,4 @@
-# midexam
+# Midterm Exam Section B
 
 // Part 1
 class Task {
@@ -59,5 +59,16 @@ class Queue<T> {
 // ประกาศคลาส Queue โดยใช้ generic type <T> ซึ่งหมายความว่า Queue สามารถเก็บข้อมูลประเภทใดก็ได้ที่ระบุในช่วงเวลาที่สร้างอ็อบเจกต์ ที่เหลือสร้าง method ทั่วไปโดยใช้ push, shift
 
 
+// Part 5
+function createTaskUpdater(updateFn: (task: PriorityTask) => void): (task: PriorityTask) => void {
+    return (task: PriorityTask) => {
+        updateFn(task);
+    };
+}
+// เรียกใช้งาน updateFn ด้วย task ที่ถูกส่งเข้ามาโดย task จะดูจากค่าอื่น ๆ เช่น task.priority
+const markAsUrgent = createTaskUpdater((task: PriorityTask) => {
+    task.priority = 'high'; // ตั้งค่าความสำคัญเป็น high
+});
+// ใช้ task.priority ส่งค่าไปใน updateFn เพื่อตั้งค่าความสำคัญเป็น high สรุปคือ method markAsUrgent ทำให้วามสำคัญเป็น high
 
 
