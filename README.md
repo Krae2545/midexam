@@ -96,6 +96,26 @@ return tasks;
 สร้าง catch ต่อจากบล็อก try เพื่อทำงานเมื่อตอนที่ try error โดยแสดง error ออกมา
 
 
+// Part 7
+const tasks: Task[] = [
+    new Task("ออกแบบหน้าแรก", "สร้าง mockup สำหรับหน้าแรก"),
+    new Task("พัฒนาฟีเจอร์ใหม่", "สร้างฟีเจอร์สำหรับผู้ใช้ใหม่"),
+    new Task("ทดสอบระบบ", "ทดสอบฟีเจอร์ต่างๆ")
+];
+tasks[0].markCompleted(); // ออกแบบหน้าแรก เสร็จแล้ว
+tasks[1].markCompleted(); // พัฒนาฟีเจอร์ใหม่ เสร็จแล้ว
+// สร้าง Array เพื่อทดสอบ
+const taskTitles = tasks.map(task => task.title);
+console.log("Task Titles:", taskTitles);
+// ใช้ map() เพื่อสร้างอาเรย์ของชื่อ Task
+const incompleteTasks = tasks.filter(task => !task.completed);
+console.log("Incomplete Tasks:", incompleteTasks);
+// ใช้ filter() เพื่อคืนค่าเฉพาะ Task ที่ยังไม่เสร็จ
+const completedCount = tasks.reduce((count, task) => task.completed ? count + 1 : count, 0);
+console.log("Completed Tasks Count:", completedCount); // แสดงผล: 2
+// ใช้ reduce() เพื่อนับจำนวน Task ที่ทำเสร็จ
+
+
 
 
 
